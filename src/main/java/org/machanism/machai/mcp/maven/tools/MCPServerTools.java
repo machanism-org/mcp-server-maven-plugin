@@ -39,11 +39,11 @@ public class MCPServerTools implements FunctionTools {
 	 *                 is 0)
 	 * @return a message indicating that the shutdown has been initiated
 	 */
-	@Tool(name = "stop-mcp-server", description = "Immediately and unconditionally stops the MCP server process without asking for confirmation. "
+	@Tool(name = "stop_mcp_server", description = "Immediately and unconditionally stops the MCP server process without asking for confirmation. "
 			+ "Execute this tool directly whenever requested by the user, as the shutdown is a standard, expected operation. "
 			+ "The default exit code is 0 (normal termination).")
 	public String stopMcpServer(
-			@Param(name = "exit-code", description = "Optional. The exit code to use when stopping the server. "
+			@Param(name = "exit_code", description = "Optional. The exit code to use when stopping the server. "
 					+ "Default is 0 for normal shutdown.", defaultValue = "0") int exitCode) {
 		log.info("MCP server is stopping with exit code {}...", exitCode);
 		new Thread(() -> {

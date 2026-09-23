@@ -157,7 +157,7 @@
         "Create a readable /path/to/mcp.properties file containing the Machai server, tool, and provider settings required by your environment.",
         "From the target Maven project or multi-module reactor root, run mvn org.machanism.machai:mcp-server-maven-plugin:1.4.1:stateless -Dmcp.port=8080 -Dmcp.config=/path/to/mcp.properties.",
         "Connect an MCP-compatible HTTP client to the server endpoint on port 8080 and invoke the configured tools.",
-        "When work is complete, invoke the exposed stop-mcp-server function with exit-code 0 for an orderly delayed shutdown."
+        "When work is complete, invoke the exposed stop-mcp-server function with exit_code 0 for an orderly delayed shutdown."
       ],
       "installCommand": "mvn install",
       "configuration": "mcp.port=8080 and mcp.config=/path/to/mcp.properties",

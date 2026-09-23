@@ -24,7 +24,7 @@ System_Boundary(plugin, "MCP Server Maven Plugin") {
   Component(statelessMojo, "HttpStatelessServerMojo", "Maven Mojo", "Applies configuration and starts an HttpStatelessMcpServer")
   Component(streamableMojo, "HttpStreamableMcpServerMojo", "Maven Mojo", "Applies configuration and starts an HttpStreamableMcpServer")
   Component(abstractMojo, "AbstractMCPServerMojo", "Abstract Maven Mojo", "Provides shared Maven parameters, system-property setup, and configuration loading")
-  Component(serverTools, "MCPServerTools", "FunctionTools", "Exposes stop-mcp-server; records final usage and performs delayed JVM shutdown")
+  Component(serverTools, "MCPServerTools", "FunctionTools", "Exposes stop_mcp_server; records final usage and performs delayed JVM shutdown")
 }
 
 Rel(developer, maven, "Invokes stateless or streamable goal")
