@@ -1,11 +1,11 @@
 package org.machanism.machai.mcp.maven.tools;
 
-import org.machanism.machai.ai.manager.UsageStatistics;
-import org.machanism.machai.ai.tools.FunctionTools;
-import org.machanism.machai.ai.tools.Param;
-import org.machanism.machai.ai.tools.SupportedFor;
-import org.machanism.machai.ai.tools.Tool;
 import org.machanism.machai.mcp.server.McpServer;
+import org.machanism.machai.process.manager.UsageStatistics;
+import org.machanism.machai.process.tools.FunctionTools;
+import org.machanism.machai.process.tools.Param;
+import org.machanism.machai.process.tools.SupportedFor;
+import org.machanism.machai.process.tools.Tool;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
