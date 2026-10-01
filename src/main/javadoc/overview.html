@@ -15,12 +15,12 @@
       properties, registers the configured Machai AI tools, and starts the selected server.
     </P>
     <P>
-      The plugin exposes configured tools to MCP clients without a separate launcher, supporting
-      local development, repeatable integration tests, demonstrations, and build-driven
-      automation. Because both goals are aggregators, a multi-module reactor starts one server
-      for the reactor rather than one server per module. The MCP Server Maven Plugin supports all
-      types of project files, including source code, documentation, project-site content, and
-      other relevant files exposed through its configured tools.
+      The plugin exposes those tools to MCP clients without a separate launcher, supporting local
+      development, repeatable integration tests, demonstrations, and build-driven automation.
+      Because both goals are aggregators, a multi-module reactor starts one server for the reactor
+      rather than one server per module. The MCP Server Maven Plugin supports all types of project
+      files, including source code, documentation, project-site content, and other relevant files
+      exposed through its configured tools.
     </P>
 
     <H2>Architecture</H2>
@@ -50,14 +50,17 @@
     <DL>
       <DT><A HREF="org/machanism/machai/mcp/maven/package-summary.html">org.machanism.machai.mcp.maven</A></DT>
       <DD>
-        Maven plugin Mojos for configuring and starting stateless or streamable MCP HTTP servers,
-        with shared support for Maven project metadata, server configuration, system properties,
-        environment variables and credentials, the project directory, and the listening port.
+        Provides Maven plugin Mojos and utilities for managing MCP server lifecycle and
+        configuration. It includes the shared base Mojo and the stateless and streamable HTTP
+        server variants, with support for Maven project metadata, configuration, system
+        properties, environment variables, credentials, the project directory, and the listening
+        port.
       </DD>
       <DT><A HREF="org/machanism/machai/mcp/maven/tools/package-summary.html">org.machanism.machai.mcp.maven.tools</A></DT>
       <DD>
-        Function tools that control MCP server lifecycle behavior during Maven build execution,
-        including the controlled <CODE>stop_mcp_server</CODE> shutdown operation.
+        Provides function tools and supporting classes for controlling and managing MCP server
+        lifecycle behavior during Maven build execution, including the controlled
+        <CODE>stop_mcp_server</CODE> shutdown operation.
       </DD>
     </DL>
 
