@@ -61,7 +61,7 @@ Both goals apply `params`, load the configuration file, create a server with the
 Run the stateless endpoint using the plugin's Maven coordinates:
 
 ```shell
-mvn org.machanism.machai:mcp-server-maven-plugin:1.4.1:stateless \
+mvn org.machanism.machai:mcp-server-maven-plugin:1.4.2:stateless \
   -Dmcp.port=8080 \
   -Dmcp.config=/path/to/mcp.properties
 ```
@@ -69,12 +69,12 @@ mvn org.machanism.machai:mcp-server-maven-plugin:1.4.1:stateless \
 For streamable HTTP, use the `streamable` goal instead:
 
 ```shell
-mvn org.machanism.machai:mcp-server-maven-plugin:1.4.1:streamable \
+mvn org.machanism.machai:mcp-server-maven-plugin:1.4.2:streamable \
   -Dmcp.port=8080 \
   -Dmcp.config=/path/to/mcp.properties
 ```
 
-The examples use version `1.4.1`. The port must be provided, and `mcp.config` should point to a file accepted by the Machai MCP server configuration loader. The implementation dereferences this file when loading configuration, so supply it even though the Maven annotation does not mark the parameter as required.
+The examples use the current project version, `1.4.2`. The port must be provided, and `mcp.config` should point to a file accepted by the Machai MCP server configuration loader. The implementation dereferences this file when loading configuration, so supply it even though the Maven annotation does not mark the parameter as required.
 
 ### Typical workflow
 
