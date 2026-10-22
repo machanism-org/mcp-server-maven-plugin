@@ -100,7 +100,7 @@ a `MojoExecutionException`.
 Run the stateless endpoint using the plugin's Maven coordinates:
 
 ```shell
-mvn org.machanism.machai:mcp-server-maven-plugin:1.4.2-SNAPSHOT:stateless \
+mvn org.machanism.machai:mcp-server-maven-plugin:1.4.2:stateless \
   -Dmcp.port=8080 \
   -Dmcp.config=/path/to/mcp.properties
 ```
@@ -108,12 +108,12 @@ mvn org.machanism.machai:mcp-server-maven-plugin:1.4.2-SNAPSHOT:stateless \
 For streamable HTTP, use the `streamable` goal instead:
 
 ```shell
-mvn org.machanism.machai:mcp-server-maven-plugin:1.4.2-SNAPSHOT:streamable \
+mvn org.machanism.machai:mcp-server-maven-plugin:1.4.2:streamable \
   -Dmcp.port=8080 \
   -Dmcp.config=/path/to/mcp.properties
 ```
 
-The examples use the current project version, `1.4.2-SNAPSHOT`. The port must be provided,
+The examples use the current project version, `1.4.2`. The port must be provided,
 and `mcp.config` should point to a file accepted by the Machai MCP server
 configuration loader. The implementation dereferences that file when loading
 configuration, so it should be supplied even though the Maven annotation does
