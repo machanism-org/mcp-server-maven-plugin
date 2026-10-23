@@ -12,5 +12,9 @@
     <release version="1.2" date="2026-06-30" description="Enhances Bindex tooling, configuration handling, and project automation capabilities while improving reliability across workflows.">
       <action dev="dev" type="add">Implemented an MCP Maven plugin module with stateless and streamable server support, stop-server tooling.</action>
     </release>
+    <release version="1.4.2" date="2026-10-23" description="Improves MCP server tool integration and streamlines shutdown parameter handling.">
+      <action dev="dev" type="update">Renamed MCP shutdown tool parameters for clearer server control.</action>
+      <action dev="dev" type="refactor">Migrated MCP server tool integrations to the process package.</action>
+    </release>
   </body>
 </document>
