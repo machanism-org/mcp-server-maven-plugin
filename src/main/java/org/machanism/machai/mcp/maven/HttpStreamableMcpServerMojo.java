@@ -1,5 +1,7 @@
 package org.machanism.machai.mcp.maven;
 
+import java.io.IOException;
+
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.machanism.macha.core.commons.configurator.PropertiesConfigurator;
@@ -32,7 +34,12 @@ public class HttpStreamableMcpServerMojo extends AbstractMCPServerMojo {
 		applyParameters();
 
 		PropertiesConfigurator config = getConfigurator();
-		HttpStreamableMcpServer mcpServer = createServer(project.getName(), project.getVersion());
+		HttpStreamableMcpServer mcpServer;
+		try {
+			mcpServer = createServer(project.getName(), project.getVersion());
+		} catch (IOException e) {
+			throw new MojoExecutionException("Server creation failed.", e);
+		}
 
 		mcpServer.setProjectDir(basedir);
 		mcpServer.tools(config);
@@ -51,8 +58,9 @@ public class HttpStreamableMcpServerMojo extends AbstractMCPServerMojo {
 	 * @param projectName Maven project name
 	 * @param projectVersion Maven project version
 	 * @return a streamable MCP server
+	 * @throws IOException 
 	 */
-	protected HttpStreamableMcpServer createServer(String projectName, String projectVersion) {
+	protected HttpStreamableMcpServer createServer(String projectName, String projectVersion) throws IOException {
 		return new HttpStreamableMcpServer(projectName, projectVersion);
 	}
 

@@ -1,5 +1,7 @@
 package org.machanism.machai.mcp.maven;
 
+import java.io.IOException;
+
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.machanism.macha.core.commons.configurator.PropertiesConfigurator;
@@ -32,7 +34,12 @@ public class HttpStatelessServerMojo extends AbstractMCPServerMojo {
 		applyParameters();
 
 		PropertiesConfigurator config = getConfigurator();
-		HttpStatelessMcpServer mcpServer = createServer(project.getName(), project.getVersion());
+		HttpStatelessMcpServer mcpServer;
+		try {
+			mcpServer = createServer(project.getName(), project.getVersion());
+		} catch (IOException e) {
+			throw new MojoExecutionException("HttpStateless MCP server failed.", e);
+		}
 
 		mcpServer.setProjectDir(basedir);
 		mcpServer.tools(config);
@@ -51,8 +58,9 @@ public class HttpStatelessServerMojo extends AbstractMCPServerMojo {
 	 * @param projectName Maven project name
 	 * @param projectVersion Maven project version
 	 * @return a stateless MCP server
+	 * @throws IOException 
 	 */
-	protected HttpStatelessMcpServer createServer(String projectName, String projectVersion) {
+	protected HttpStatelessMcpServer createServer(String projectName, String projectVersion) throws IOException {
 		return new HttpStatelessMcpServer(projectName, projectVersion);
 	}
 

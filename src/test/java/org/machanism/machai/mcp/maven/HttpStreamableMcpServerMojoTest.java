@@ -8,6 +8,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
 import java.io.File;
+import java.io.IOException;
 
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.project.MavenProject;
@@ -57,7 +58,7 @@ class HttpStreamableMcpServerMojoTest {
     }
 
     @Test
-    void createServerBuildsStreamableServerForProjectIdentity() {
+    void createServerBuildsStreamableServerForProjectIdentity() throws IOException {
         HttpStreamableMcpServer server = new HttpStreamableMcpServerMojo().createServer("stream", "1.0");
 
         org.junit.jupiter.api.Assertions.assertNotNull(server);

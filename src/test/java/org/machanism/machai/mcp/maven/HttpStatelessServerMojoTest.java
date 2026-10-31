@@ -8,6 +8,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
 import java.io.File;
+import java.io.IOException;
 
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.project.MavenProject;
@@ -59,7 +60,7 @@ class HttpStatelessServerMojoTest {
     }
 
     @Test
-    void createServerBuildsStatelessServerForProjectIdentity() {
+    void createServerBuildsStatelessServerForProjectIdentity() throws IOException {
         HttpStatelessMcpServer server = new HttpStatelessServerMojo().createServer("demo", "1.0");
 
         org.junit.jupiter.api.Assertions.assertNotNull(server);
