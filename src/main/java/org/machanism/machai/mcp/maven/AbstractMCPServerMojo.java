@@ -97,10 +97,8 @@ public abstract class AbstractMCPServerMojo extends AbstractMojo {
 	 */
 	protected PropertiesConfigurator loadConfigurator(String configurationPath) throws ConfigurationLoadingException {
 		try {
-			return McpServer.getConfigurator(configurationPath);
+			return McpServer.getConfigurator(configurationPath, null);
 		} catch (Exception exception) {
-			// Sonar java:S112: expose a domain-specific failure rather than a generic
-			// exception.
 			throw new ConfigurationLoadingException("Unable to load MCP server configuration", exception);
 		}
 	}

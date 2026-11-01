@@ -82,7 +82,7 @@ class AbstractMCPServerMojoTest {
         PropertiesConfigurator expected = Mockito.mock(PropertiesConfigurator.class);
 
         try (MockedStatic<McpServer> server = Mockito.mockStatic(McpServer.class)) {
-            server.when(() -> McpServer.getConfigurator("/tmp/mcp.properties")).thenReturn(expected);
+            server.when(() -> McpServer.getConfigurator("/tmp/mcp.properties", null)).thenReturn(expected);
 
             PropertiesConfigurator actual = mojo.loadConfigurator("/tmp/mcp.properties");
 
@@ -96,7 +96,7 @@ class AbstractMCPServerMojoTest {
         IllegalArgumentException cause = new IllegalArgumentException("malformed configuration");
 
         try (MockedStatic<McpServer> server = Mockito.mockStatic(McpServer.class)) {
-            server.when(() -> McpServer.getConfigurator("/tmp/broken.properties")).thenThrow(cause);
+            server.when(() -> McpServer.getConfigurator("/tmp/broken.properties", null)).thenThrow(cause);
 
             AbstractMCPServerMojo.ConfigurationLoadingException exception = assertThrows(
                     AbstractMCPServerMojo.ConfigurationLoadingException.class,
