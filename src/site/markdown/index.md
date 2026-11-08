@@ -100,31 +100,31 @@ a `MojoExecutionException`.
 Run the stateless endpoint using the plugin's Maven coordinates:
 
 ```shell
-mvn org.machanism.machai:mcp-server-maven-plugin:1.4.2:stateless \
-  -Dmcp.port=8080 \
-  -Dmcp.config=/path/to/mcp.properties
+mvn org.machanism.machai:mcp-server-maven-plugin:1.4.3-SNAPSHOT:stateless -Dmcp.port=8080 -Dmcp.config=mcp.properties
 ```
 
 For streamable HTTP, use the `streamable` goal instead:
 
 ```shell
-mvn org.machanism.machai:mcp-server-maven-plugin:1.4.2:streamable \
-  -Dmcp.port=8080 \
-  -Dmcp.config=/path/to/mcp.properties
+mvn org.machanism.machai:mcp-server-maven-plugin:1.4.3-SNAPSHOT:streamable -Dmcp.port=8080 -Dmcp.config=mcp.properties
 ```
 
-The examples use the current project version, `1.4.2`. The port must be provided,
-and `mcp.config` should point to a file accepted by the Machai MCP server
-configuration loader. The implementation dereferences that file when loading
-configuration, so it should be supplied even though the Maven annotation does
-not mark the parameter as required.
+The examples use the current version inherited from `pom.xml`,
+`1.4.3-SNAPSHOT`, and work as single-line commands on Windows as well as other
+platforms. Install this snapshot locally or configure a repository that provides
+it before invoking these commands; alternatively, use an available released
+version from Maven Central. The port must be provided. The configuration file
+must be accepted by the Machai MCP server configuration loader; `mcp.config`
+defaults to `mcp.properties`, so it can be omitted when that default file is
+available.
 
 ### Typical workflow
 
 1. Prepare an MCP configuration file and resolve the plugin in the Maven project.
 2. Choose `stateless` or `streamable` according to the transport expected by the
    MCP client.
-3. Supply `mcp.port`, `mcp.config`, and any `params` values before invoking Maven.
+3. Supply `mcp.port`, set `mcp.config` if not using the default file, and configure
+   any `params` values in the plugin configuration in `pom.xml`.
 4. Run the aggregator goal from the desired project or reactor root; it uses the
    Maven project metadata and base directory to configure one server.
 5. Connect an MCP HTTP client to the selected endpoint and use the configured
@@ -147,9 +147,9 @@ reactor or project root.
 | `configFile` | `mcp.config` | File whose absolute path is passed to `McpServer.getConfigurator(...)` to load server configuration and tool settings. | `mcp.properties` |
 | `params` | — | Map of additional key/value values copied to JVM system properties only when the property is not already set; null values are ignored. | No default |
 
-When `mcp.config` is omitted, the plugin resolves its `mcp.properties` default to
-an absolute path relative to the Maven process's working directory; provide
-`mcp.config` when the configuration file is elsewhere. Existing JVM system
+When `mcp.config` is omitted, Maven supplies the `mcp.properties` default. The
+plugin passes the injected file's absolute path to the configuration loader;
+provide `mcp.config` when the configuration file is elsewhere. Existing JVM system
 properties take precedence over values in `params`, and null parameter values are
 not applied. Keep configuration and credentials out of source control where
 possible, and pass sensitive values through an appropriate secured Maven or
@@ -163,16 +163,21 @@ function-tool implementation's `@SupportedFor(McpServer.class)` annotation.
 
 ### `stop_mcp_server`
 
+Supported for `McpServer` via `@SupportedFor(McpServer.class)`,
 `stop_mcp_server` accepts the optional integer parameter `exit_code`, which
 defaults to `0`, and immediately returns `MCP server shutdown initiated.` It logs
 the requested exit code, starts a background shutdown task, waits one second,
 records usage statistics, and exits the JVM with that code. This is intended for
-orderly termination after a client has completed its work; an interrupted delay
-is logged before the shutdown continues.
+termination after a client has completed its work. It does not ask for
+confirmation and exits the entire hosting JVM, including the Maven process,
+rather than just closing the HTTP endpoint. An interrupted delay is logged and
+the shutdown thread's interrupt status is restored before shutdown continues.
 
 ## Resources
 
 - [Machai platform](https://machai.machanism.org/)
+- [Plugin GitHub repository](https://github.com/machanism-org/mcp-server-maven-plugin)
 - [Machai GitHub repository](https://github.com/machanism-org/machai)
 - [Maven Central artifact](https://central.sonatype.com/artifact/org.machanism.machai/mcp-server-maven-plugin)
-- [Bindex metadata](https://raw.githubusercontent.com/machanism-org/machai/refs/heads/main/mcp-server-maven-plugin/bindex.json)
+- [Bindex metadata](https://raw.githubusercontent.com/machanism-org/mcp-server-maven-plugin/refs/heads/main/bindex.json)
+- [Apache Maven documentation](https://maven.apache.org/guides/)
