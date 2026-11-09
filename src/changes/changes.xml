@@ -3,6 +3,14 @@
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://maven.apache.org/changes/2.0.0 https://maven.apache.org/xsd/changes-2.0.0.xsd">
   <body>
+    <release version="1.4.3" date="2026-11-09" description="Improves MCP server configuration handling and reliability.">
+      <action dev="dev" type="fix">Passed the configured MCP file to the server.</action>
+      <action dev="dev" type="fix">Handled MCP server creation failures.</action>
+    </release>
+    <release version="1.4.2" date="2026-10-23" description="Improves MCP server tool integration and streamlines shutdown parameter handling.">
+      <action dev="dev" type="update">Renamed MCP shutdown tool parameters for clearer server control.</action>
+      <action dev="dev" type="refactor">Migrated MCP server tool integrations to the process package.</action>
+    </release>
     <release version="1.4.0" date="2026-09-01"
              description="Adds Javadoc-fixing automation, improves workflow integrations, and standardizes tool naming.">
       <action dev="dev" type="add">Added the `fix-javadoc` act for automating Javadoc issue resolution.</action>
@@ -11,10 +19,6 @@
     </release>
     <release version="1.2" date="2026-06-30" description="Enhances Bindex tooling, configuration handling, and project automation capabilities while improving reliability across workflows.">
       <action dev="dev" type="add">Implemented an MCP Maven plugin module with stateless and streamable server support, stop-server tooling.</action>
-    </release>
-    <release version="1.4.2" date="2026-10-23" description="Improves MCP server tool integration and streamlines shutdown parameter handling.">
-      <action dev="dev" type="update">Renamed MCP shutdown tool parameters for clearer server control.</action>
-      <action dev="dev" type="refactor">Migrated MCP server tool integrations to the process package.</action>
     </release>
   </body>
 </document>
