@@ -100,17 +100,17 @@ a `MojoExecutionException`.
 Run the stateless endpoint using the plugin's Maven coordinates:
 
 ```shell
-mvn org.machanism.machai:mcp-server-maven-plugin:1.4.3-SNAPSHOT:stateless -Dmcp.port=8080 -Dmcp.config=mcp.properties
+mvn org.machanism.machai:mcp-server-maven-plugin:1.4.3:stateless -Dmcp.port=8080 -Dmcp.config=mcp.properties
 ```
 
 For streamable HTTP, use the `streamable` goal instead:
 
 ```shell
-mvn org.machanism.machai:mcp-server-maven-plugin:1.4.3-SNAPSHOT:streamable -Dmcp.port=8080 -Dmcp.config=mcp.properties
+mvn org.machanism.machai:mcp-server-maven-plugin:1.4.3:streamable -Dmcp.port=8080 -Dmcp.config=mcp.properties
 ```
 
 The examples use the current version inherited from `pom.xml`,
-`1.4.3-SNAPSHOT`, and work as single-line commands on Windows as well as other
+`1.4.3`, and work as single-line commands on Windows as well as other
 platforms. Install this snapshot locally or configure a repository that provides
 it before invoking these commands; alternatively, use an available released
 version from Maven Central. The port must be provided. The configuration file
